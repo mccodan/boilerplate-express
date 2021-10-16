@@ -6,6 +6,8 @@
 var bGround = require('fcc-express-bground');
 var myApp = require('./myApp');
 var express = require('express');
+const { application } = require('express');
+const { path } = require('./myApp');
 var app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -21,10 +23,7 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.get('/', function (req, res) {
-  let absolutePath = __dirname;
-  res.sendFile(absolutePath + '/views/index.html');
-});
+
 
 var port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
