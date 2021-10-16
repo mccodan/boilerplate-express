@@ -61,15 +61,14 @@ app.get('/json', function (req, res) {
 
 //here we are exploring query strings
 //this assumes a query of "?first=firstname&last=lastname" is requested by user at the end of the name route
-app.get('/name', (req, res) => {
-    var firstname = req.query.first;
-    var lastname = req.query.last;
+//this is a router handler for post requests to /name
+app.post('/name', (req, res) => {
+    var firstname = req.body.first;
+    var lastname = req.body.last;
     res.json({
         "name": `${firstname}` + " " + `${lastname}`
     });
 });
-
-console.log(req.body);
 
 
 
